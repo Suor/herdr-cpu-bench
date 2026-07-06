@@ -89,10 +89,8 @@ _open_repo_pool() {
       fi
     done
   done
-  # herdr checkouts already present in this project — no extra clone needed.
-  for dir in "$PROJ/herdr" "$PROJ/herdr-v070" "$PROJ/herdr-v071" "$PROJ/wt-probe-fix" "$PROJ/wt-slim-probe-fix"; do
-    [ -e "$dir/.git" ] && echo "$dir"
-  done
+  # the herdr source submodule bundled with this harness — one more real repo, no clone needed.
+  [ -e "$PROJ/herdr/.git" ] && echo "$PROJ/herdr"
 }
 
 # Refuse to touch anything if SRC is the path a live server runs from AND we were
